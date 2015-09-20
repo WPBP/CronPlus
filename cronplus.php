@@ -16,7 +16,12 @@ if ( !defined( 'WPINC' ) ) {
 
 // Load and initialize class. If you're loading the CronPlus class in another plugin or theme, this is all you need.
 require_once 'class-cronplus.php';
-$args = array( 'recurrence' => 'hourly', 'schedule' => 'schedule', 'name' => 'cronplusexample', 'cb' => cronplus_example() );
+$args = array(
+    'recurrence' => 'hourly',
+    'schedule' => 'schedule',
+    'name' => 'cronplusexample',
+    'cb' => 'cronplus_example'
+);
 
 function cronplus_example() {
 	echo 123;
