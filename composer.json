@@ -1,0 +1,20 @@
+{
+    "name": "mte90/cronplus",
+    "description": "CronPlus facilitate the creation of Cron Events in WordPress",
+    "require": {
+        "php": "5.2"
+    },
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Daniele Scasciafratte",
+            "email": "foo@bar.net"
+        }
+    ],
+		"repositories": [
+				{
+						"type": "vcs",
+						"url": "https://github.com/Mte90/CronPlus.git"
+				}
+		]
+}
