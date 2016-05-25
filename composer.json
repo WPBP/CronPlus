@@ -17,5 +17,10 @@
 		"type": "vcs",
 		"url": "https://github.com/WPBP/CronPlus.git"
 	}
-    ]
+    ],
+    "autoload": {
+        "psr-0": {
+            "wpbp\\cronplus": "/"
+        }
+    },
 }
