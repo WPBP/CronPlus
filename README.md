@@ -23,4 +23,6 @@ function cronplus_example() {
 
 $cronplus = new CronPlus( $args );
 $cronplus->schedule_event();
+$cronplus->clear_schedule();
+$cronplus->unschedule_event();
 ```
