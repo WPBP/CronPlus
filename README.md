@@ -7,9 +7,13 @@ Add and remove Cron job in WordPress easily!
 
 ```
 $args = array(
+    // hourly,daily,twicedaily,weekly,monthly or timestamp for single event
     'recurrence' => 'hourly',
+    // schedule (specific interval) or single (at the time specified)
     'schedule' => 'schedule',
+    // Name of the Cron job used internally
     'name' => 'cronplusexample',
+    // Callback to execute when the cron job is launched
     'cb' => 'cronplus_example'
 );
 
