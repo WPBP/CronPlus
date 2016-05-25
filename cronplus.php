@@ -43,9 +43,9 @@ class CronPlus {
 	 */
 	public function schedule_event() {
 		if ( !wp_next_scheduled( $this->args[ 'name' ] ) ) {
-			if ( $this->args[ 'schedule' ] ) {
+			if ( $this->args[ 'schedule' ] === 'schedule') {
 				wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ] );
-			} else {
+			} elseif ( $this->args[ 'schedule' ] === 'single') { {
 				wp_schedule_single_event( $this->args[ 'recurrence' ], $this->args[ 'name' ] );
 			}
 		}
