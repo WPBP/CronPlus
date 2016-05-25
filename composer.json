@@ -2,6 +2,9 @@
     "name": "wpbp/cronplus",
     "description": "Add/Remove a WordPress Cron job easily",
     "license": "GPL 3",
+    "keywords": ["wordpress","cron"],
+    "homepage": "https://github.com/WPBP/CronPlus",
+    "type": "library",
     "authors": [
         {
             "name": "Daniele Scasciafratte",
