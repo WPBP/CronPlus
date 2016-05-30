@@ -15,7 +15,7 @@
       "homepage": "http://mte90.net"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev-master",
   "repositories": [
     {
       "type": "vcs",
