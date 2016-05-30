@@ -1,26 +1,30 @@
 {
-    "name": "wpbp/cronplus",
-    "description": "Add/Remove a WordPress Cron job easily",
-    "license": "GPL 3",
-    "keywords": ["wordpress","cron"],
-    "homepage": "https://github.com/WPBP/CronPlus",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Daniele Scasciafratte",
-            "email": "mte90net@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "repositories": [
-	{
-		"type": "vcs",
-		"url": "https://github.com/WPBP/CronPlus.git"
-	}
-    ],
-    "autoload": {
-        "psr-0": {
-            "wpbp\\cronplus": "/"
-        }
+  "name": "wpbp/cronplus",
+  "description": "Add/Remove a WordPress Cron job easily",
+  "license": "GPL-3.0",
+  "keywords": [
+    "wordpress",
+    "cron"
+  ],
+  "homepage": "https://github.com/WPBP/CronPlus",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Daniele Scasciafratte",
+      "email": "mte90net@gmail.com",
+      "homepage": "http://mte90.net"
     }
+  ],
+  "minimum-stability": "stable",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/WPBP/CronPlus.git"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "cronplus.php"
+    ]
+  }
 }
