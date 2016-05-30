@@ -5,7 +5,7 @@ Add and remove Cron job in WordPress easily!
 
 ## Install
 
-`composer require wpbp/cronplus`
+`composer require wpbp/cronplus:dev-master`
 
 [composer-php52](https://github.com/composer-php52/composer-php52) supported.
 
