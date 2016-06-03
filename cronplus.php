@@ -35,12 +35,13 @@ class CronPlus {
     $defaults = array(
 	  'recurrence' => 'hourly', // Hourly,daily,twicedaily,weekly,monthly
 	  'name' => 'cronplus',
-	  'schedule' => 'schedule' // Schedule or single
+	  'schedule' => 'schedule', // Schedule or single,
+	  'cb' => ''
     );
 
     $this->args = wp_parse_args( $args, $defaults );
-    if ( isset( $this->cb ) && isset( $this->name ) ) {
-	add_action( $this->args[ 'name' ], $this->cb );
+    if ( isset( $this->args['cb'] ) && isset( $this->args['name'] ) ) {
+	add_action( $this->args[ 'name' ], $this->args['cb'] );
     }
   }
 
