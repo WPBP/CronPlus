@@ -1,5 +1,6 @@
 # CronPlus
-[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)   
+[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+![Downloads](https://img.shields.io/packagist/dt/wpbp/cronplus.svg) 
 
 Add and remove Cron job in WordPress easily!
 
