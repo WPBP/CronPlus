@@ -36,7 +36,8 @@ class CronPlus {
 	  'recurrence' => 'hourly', // Hourly,daily,twicedaily,weekly,monthly
 	  'name' => 'cronplus',
 	  'schedule' => 'schedule', // Schedule or single,
-	  'cb' => ''
+	  'cb' => '',
+	  'args' => ''. // Args passed to the hook
     );
 
     $this->args = wp_parse_args( $args, $defaults );
@@ -54,9 +55,9 @@ class CronPlus {
   public function schedule_event() {
     if ( !wp_next_scheduled( $this->args[ 'name' ] ) ) {
 	if ( $this->args[ 'schedule' ] === 'schedule' ) {
-	  wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ] );
+	  wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
 	} elseif ( $this->args[ 'schedule' ] === 'single' ) {
-	  wp_schedule_single_event( $this->args[ 'recurrence' ], $this->args[ 'name' ] );
+	  wp_schedule_single_event( $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
 	}
     }
   }
