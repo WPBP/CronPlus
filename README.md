@@ -21,11 +21,13 @@ $args = array(
     // Name of the Cron job used internally
     'name' => 'cronplusexample',
     // Callback to execute when the cron job is launched
-    'cb' => 'cronplus_example'
+    'cb' => 'cronplus_example',
+    // Args passed to the hook executed during the cron
+    'args' => array( get_the_ID() )
 );
 
-function cronplus_example() {
-	echo 123;
+function cronplus_example( $id ) {
+	echo $id;
 }
 
 $cronplus = new CronPlus( $args );
