@@ -37,7 +37,7 @@ class CronPlus {
 	  'name' => 'cronplus',
 	  'schedule' => 'schedule', // Schedule or single,
 	  'cb' => '',
-	  'args' => ''. // Args passed to the hook
+	  'args' => '' // Args passed to the hook
     );
 
     $this->args = wp_parse_args( $args, $defaults );
