@@ -53,7 +53,14 @@ class CronPlus {
 	 * @return void
 	 */
 	public function schedule_event() {
-		if ( !wp_next_scheduled( $this->args[ 'name' ] ) ) {
+		$find = false;
+		$crons = _get_cron_array();
+		foreach ( $crons as $timestamp => $cron ) {
+			if ( isset( $cron[ $this->args[ 'name' ]] ) ) {
+				$find = true;
+			}
+		}
+		if ( !$find && !wp_next_scheduled( $this->args[ 'name' ] ) ) {
 			if ( $this->args[ 'schedule' ] === 'schedule' ) {
 				wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
 			} elseif ( $this->args[ 'schedule' ] === 'single' ) {
