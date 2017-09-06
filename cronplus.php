@@ -39,6 +39,7 @@ class CronPlus {
 			'cb' => '',
 			'multisite' => 'false',
 			'plugin_root_file' => '',
+			'run_on_creation' => 'false',
 			'args' => array( '' ) // Args passed to the hook
 		);
 
@@ -66,6 +67,9 @@ class CronPlus {
 			}
 		}
 		if ( !$find && !wp_next_scheduled( $this->args[ 'name' ] ) ) {
+			if ( $this->args[ 'run_on_creation' ] ) {
+				call_user_func( $this->args[ 'cb' ], $this->args[ 'args' ] );
+			}
 			if ( $this->args[ 'schedule' ] === 'schedule' ) {
 				wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
 			} elseif ( $this->args[ 'schedule' ] === 'single' ) {

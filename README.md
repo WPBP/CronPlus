@@ -26,6 +26,8 @@ $args = array(
 	'multisite'=> 'false',
 	// Used on deactivation for register_deactivation_hook to cleanup
 	'plugin_root_file'=> '',
+	// When the event is scheduled is also executed 
+	'run_on_creation'=> 'false',
     // Args passed to the hook executed during the cron
     'args' => array( get_the_ID() )
 );
@@ -42,4 +44,3 @@ $cronplus->clear_schedule_by_hook();
 // Jump the scheduled event
 $cronplus->unschedule_specific_event();
 ```
-
