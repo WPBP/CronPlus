@@ -21,19 +21,25 @@ $args = array(
     // Name of the Cron job used internally
     'name' => 'cronplusexample',
     // Callback to execute when the cron job is launched
-    'cb' => 'cronplus_example'
+    'cb' => 'cronplus_example',
+	// Multisite support disabled by default
+	'multisite'=> 'false',
+	// Used on deactivation for register_deactivation_hook to cleanup
+	'plugin_root_file'=> '',
+    // Args passed to the hook executed during the cron
+    'args' => array( get_the_ID() )
 );
 
-function cronplus_example() {
-	echo 123;
+function cronplus_example( $id ) {
+	echo $id;
 }
 
 $cronplus = new CronPlus( $args );
 // Schedule the event
 $cronplus->schedule_event();
 // Remove the event by the schedule
-$cronplus->clear_schedule();
+$cronplus->clear_schedule_by_hook();
 // Jump the scheduled event
-$cronplus->unschedule_event();
+$cronplus->unschedule_specific_event();
 ```
 
