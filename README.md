@@ -22,12 +22,12 @@ $args = array(
     'name' => 'cronplusexample',
     // Callback to execute when the cron job is launched
     'cb' => 'cronplus_example',
-	// Multisite support disabled by default
-	'multisite'=> 'false',
-	// Used on deactivation for register_deactivation_hook to cleanup
-	'plugin_root_file'=> '',
-	// When the event is scheduled is also executed 
-	'run_on_creation'=> 'false',
+    // Multisite support disabled by default
+    'multisite'=> false,
+    // Used on deactivation for register_deactivation_hook to cleanup
+    'plugin_root_file'=> '',
+    // When the event is scheduled is also executed 
+    'run_on_creation'=> false,
     // Args passed to the hook executed during the cron
     'args' => array( get_the_ID() )
 );

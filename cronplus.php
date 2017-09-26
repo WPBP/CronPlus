@@ -37,9 +37,9 @@ class CronPlus {
 			'name' => 'cronplus',
 			'schedule' => 'schedule', // Schedule or single,
 			'cb' => '',
-			'multisite' => 'false',
+			'multisite' => false,
 			'plugin_root_file' => '',
-			'run_on_creation' => 'false',
+			'run_on_creation' => false,
 			'args' => array( '' ) // Args passed to the hook
 		);
 
@@ -61,12 +61,14 @@ class CronPlus {
 	public function schedule_event() {
 		$find = false;
 		$crons = _get_cron_array();
-		foreach ( $crons as $timestamp => $cron ) {
-			if ( isset( $cron[ $this->args[ 'name' ] ] ) ) {
-				$find = true;
+		if ( !empty( $crons ) ) {
+			foreach ( $crons as $timestamp => $cron ) {
+				if ( isset( $cron[ $this->args[ 'name' ] ] ) ) {
+					$find = true;
+				}
 			}
 		}
-		if ( !$find && !wp_next_scheduled( $this->args[ 'name' ] ) ) {
+		if ( !$find ) {
 			if ( $this->args[ 'run_on_creation' ] ) {
 				call_user_func( $this->args[ 'cb' ], $this->args[ 'args' ] );
 			}
