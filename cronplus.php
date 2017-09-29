@@ -55,28 +55,31 @@ class CronPlus {
 	/**
 	 * Schedule the event
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
+	 * 
 	 * @return void
 	 */
 	public function schedule_event() {
-			if ($this->isScheduled($this->args['name'], _get_cron_array())) {
-				return;
-			}
-			if ( $this->args[ 'run_on_creation' ] ) {
-				call_user_func( $this->args[ 'cb' ], $this->args[ 'args' ] );
-			}
-			if ( $this->args[ 'schedule' ] === 'schedule' ) {
-				wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
-			} elseif ( $this->args[ 'schedule' ] === 'single' ) {
-				wp_schedule_single_event( $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
-			}
+		if ( $this->is_scheduled( $this->args[ 'name' ] ) ) {
+			return;
+		}
+		if ( $this->args[ 'run_on_creation' ] ) {
+			call_user_func( $this->args[ 'cb' ], $this->args[ 'args' ] );
+		}
+		if ( $this->args[ 'schedule' ] === 'schedule' ) {
+			wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
+		} elseif ( $this->args[ 'schedule' ] === 'single' ) {
+			wp_schedule_single_event( $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
+		}
 
-			// Save all the site ids where is the corn for the deactivation
-			if ( is_multisite() && !wp_is_large_network() ) {
-				$sites = ( array ) get_site_option( $this->args[ 'name' ] . '_sites', array() );
-				$sites[] = get_current_blog_id();
-				update_site_option( $this->args[ 'name' ] . '_sites', $sites );
-			}
+		// Save all the site ids where is the corn for the deactivation
+		if ( is_multisite() && !wp_is_large_network() ) {
+			$sites = ( array ) get_site_option( $this->args[ 'name' ] . '_sites', array() );
+			$sites[] = get_current_blog_id();
+			update_site_option( $this->args[ 'name' ] . '_sites', $sites );
+		}
+
+		return true;
 	}
 
 	/**
@@ -130,18 +133,21 @@ class CronPlus {
 	}
 
 	/**
+	 * Check if the event is scheduled
+	 * 
 	 * @param string $name
 	 * @param array $crons
 	 * @return bool
 	 */
-	private function isScheduled($name, $crons)
-	{
-		if(empty($crons)) {
+	private function is_scheduled( $name ) {
+		$crons = _get_cron_array();
+		
+		if ( empty( $crons ) ) {
 			return false;
 		}
 
-		foreach ($crons as $cron) {
-			if (isset($cron[$name])) {
+		foreach ( $crons as $cron ) {
+			if ( isset( $cron[ $name ] ) ) {
 				return true;
 			}
 		}
