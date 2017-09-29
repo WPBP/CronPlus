@@ -59,16 +59,9 @@ class CronPlus {
 	 * @return void
 	 */
 	public function schedule_event() {
-		$find = false;
-		$crons = _get_cron_array();
-		if ( !empty( $crons ) ) {
-			foreach ( $crons as $timestamp => $cron ) {
-				if ( isset( $cron[ $this->args[ 'name' ] ] ) ) {
-					$find = true;
-				}
+			if ($this->isScheduled($this->args['name'], _get_cron_array())) {
+				return;
 			}
-		}
-		if ( !$find ) {
 			if ( $this->args[ 'run_on_creation' ] ) {
 				call_user_func( $this->args[ 'cb' ], $this->args[ 'args' ] );
 			}
@@ -84,7 +77,6 @@ class CronPlus {
 				$sites[] = get_current_blog_id();
 				update_site_option( $this->args[ 'name' ] . '_sites', $sites );
 			}
-		}
 	}
 
 	/**
@@ -135,6 +127,26 @@ class CronPlus {
 		restore_current_blog();
 
 		delete_site_option( $this->args[ 'name' ] . '_sites' );
+	}
+
+	/**
+	 * @param string $name
+	 * @param array $crons
+	 * @return bool
+	 */
+	private function isScheduled($name, $crons)
+	{
+		if(empty($crons)) {
+			return false;
+		}
+
+		foreach ($crons as $cron) {
+			if (isset($cron[$name])) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
