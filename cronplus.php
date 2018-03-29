@@ -5,7 +5,7 @@
  * @author    Mte90
  * @license   GPL-3.0+
  * @link      http://mte90.net
- * @copyright 2015-2016 GPL
+ * @copyright 2015-2018 GPL
  */
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) {
@@ -33,6 +33,7 @@ class CronPlus {
 	 */
 	function __construct( $args ) {
 		$defaults = array(
+			'time' => current_time( 'timestamp' ), // If you want a specific time (unix timestamp required)
 			'recurrence' => 'hourly', // Hourly,daily,twicedaily,weekly,monthly
 			'name' => 'cronplus',
 			'schedule' => 'schedule', // Schedule or single,
@@ -67,7 +68,7 @@ class CronPlus {
 			call_user_func( $this->args[ 'cb' ], $this->args[ 'args' ] );
 		}
 		if ( $this->args[ 'schedule' ] === 'schedule' ) {
-			wp_schedule_event( current_time( 'timestamp' ), $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
+			wp_schedule_event( $this->args[ 'time' ], $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
 		} elseif ( $this->args[ 'schedule' ] === 'single' ) {
 			wp_schedule_single_event( $this->args[ 'recurrence' ], $this->args[ 'name' ], $this->args[ 'args' ] );
 		}
