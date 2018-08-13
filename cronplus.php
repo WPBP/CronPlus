@@ -7,10 +7,6 @@
  * @link      http://mte90.net
  * @copyright 2015-2018 GPL
  */
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  *  * Add and remove Cron job in WordPress easily!
