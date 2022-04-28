@@ -15,7 +15,7 @@ Add and remove Cron job in WordPress easily!
 ```php
 $args = array(
     // to execute at a specific time based on recurrence
-    'time' => '18:00:00', // not mandatory, will use the current time
+    'time' => time(), // not mandatory, will use the current time
     // hourly, daily, twicedaily, weekly, monthly or timestamp for single event
     'recurrence' => 'hourly',
     // schedule (specific interval) or single (at the time specified)
