@@ -29,7 +29,7 @@ class CronPlus {
 	 */
 	function __construct( $args ) {
 		$defaults = array(
-			'time' => current_time( 'timestamp' ), // If you want a specific time (unix timestamp required)
+			'time' => current_time('timestamp', true), // If you want a specific time (unix timestamp required)
 			'recurrence' => 'hourly', // Hourly,daily,twicedaily,weekly,monthly
 			'name' => 'cronplus',
 			'schedule' => 'schedule', // Schedule or single,
